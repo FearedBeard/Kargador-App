@@ -29,6 +29,7 @@ Rod weights are never invented. Until measured in More → Equipment, the displa
 
 Run `node tests/workout.test.cjs`: 20 focused state/data tests.
 Run `node tests/browser.test.cjs`: mobile browser interaction check using Playwright and installed Edge. Update the Playwright require path if running on another machine.
+Deployment connected to Vercel.
 
 Checked: live marching countdown, ring rendering, reload/resume, deadline completion after background-equivalent elapsed time, plank auto-logging, rest gating and skip, transition rest, paused timers, fixed loads, pair/single/bar/bodyweight display, inventory constraints, progression bounds, saved partial session, substitution persistence, hidden nav, and mobile horizontal overflow.
 
