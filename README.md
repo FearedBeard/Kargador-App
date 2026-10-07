@@ -36,3 +36,16 @@ Checked: live marching countdown, ring rendering, reload/resume, deadline comple
 Browser screenshots were inspected at 390 × 844 (iPhone 14 CSS viewport). Tests use Chromium/Edge, not actual iOS Safari. iOS suspends background JavaScript; the deadline catches up on return, but a completion alert cannot be guaranteed while the app is suspended. Vibration is optional and ignored on unsupported browsers.
 
 Exercise demonstration placeholders remain unchanged in the detail sheet. This pass does not add movement animation assets or redesign unrelated areas.
+
+## October 7 update
+
+- Skip any warmup or exercise. Skipping cancels that movement's timer, preserves performed sets, and records skipped exercise status. Skipped work earns no exercise completion XP. Finish or skip each exercise to close a session; a completely skipped session remains partial and earns zero XP.
+- Upcoming movement preview on current warmup/exercise screens.
+- The timer ring now follows fractional deadline time with a subtle linear transition instead of jumping at integer seconds. Reduced-motion preferences disable the transition.
+- Workout options → Weight used shows the current setup and offers only valid inventory-based setups. Override affects future sets only; history shows actual per-set weights. Automatic loading stays the default.
+- More → App preferences & testing contains an in-memory Testing mode and Reset data. Testing mode does not save changes. Turning it off or reopening the app discards the trial. Reset trial affects only memory; normal reset requires typing RESET, offers backup export, and clears only Iron Week storage keys.
+- New validation.js validates imported identifiers, settings, dates, numbers, exercise records and timer state. Malicious imported IDs and attribute payloads are rejected before rendering. Existing schema 2 and legitimate legacy data are retained.
+
+Verification: 31 state/data regression tests plus mobile browser interaction checks at 390 × 844. Checked countdown restoration, both rests, skips, actual per-set override weights, trial isolation, protected reset, malicious-backup rejection, legacy migration, rotation, redemption/XP separation and mobile layout. Tests run in Chromium/Edge, not physical iOS Safari. Exercise animation assets remain reserved for a later update; this change preserves the existing guide sheet.
+
+Production files now also include validation.js and controls.js; both are referenced by index.html. No build or backend is needed.
